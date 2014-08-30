@@ -17,9 +17,10 @@ settings:
 	width: 800
 	height: 600
 	windowmode: fullscreen`,
-			"data/example.yaml": "---",
 		},
 	}
+
+	fa.WriteFile("data/example.yaml", []byte("---"), 0777)
 
 	data, err := fa.ReadFile("data/example.yaml")
 
