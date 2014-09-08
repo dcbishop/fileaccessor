@@ -7,30 +7,31 @@ import (
 
 func ExampleMemFileAccessor() {
 	fa := MemFileAccessor{
-		map[string]string{
-			"data/manifest.yaml": `---
+		map[string][]byte{
+			"data/manifest.yaml": []byte(`---
 manifest:
-    gamename: ExampleName`,
+    gamename: ExampleName`),
 
-			"data/settings.yaml": `---
+			"data/settings.yaml": []byte(`---
 settings:
 	width: 800
 	height: 600
-	windowmode: fullscreen`,
+	windowmode: fullscreen`),
 		},
 	}
 
-	fa.WriteFile("data/example.yaml", []byte("---"), 0777)
+	fa.WriteFile("data/example.txt", []byte("This is a virtual file."), 0777)
 
-	data, err := fa.ReadFile("data/example.yaml")
+	data, err := fa.ReadFile("data/example.txt")
 
 	if err != nil {
+		fmt.Println("Failed to find virtual file.")
 		return
 	}
 
 	fmt.Println(string(data))
 
-	// Output: ---
+	// Output: This is a virtual file.
 }
 
 func TestMemFileAccessorError(t *testing.T) {

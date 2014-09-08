@@ -28,7 +28,7 @@ func (fileAccessor SystemFileAccessor) WriteFile(filename string, data []byte, p
 
 // MemFileAccessor load virtual files from memory
 type MemFileAccessor struct {
-	files map[string]string
+	files map[string][]byte
 }
 
 // ReadFile returns the file as a string
@@ -46,6 +46,6 @@ func (fileAccessor MemFileAccessor) WriteFile(filename string, data []byte, perm
 		return errors.New("MemFileAccessor Append operation currently not supported.")
 	}
 
-	fileAccessor.files[filename] = string(data)
+	fileAccessor.files[filename] = data
 	return nil
 }
