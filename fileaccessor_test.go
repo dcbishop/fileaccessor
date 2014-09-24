@@ -6,7 +6,7 @@ import (
 )
 
 func ExampleMemFileAccessor() {
-	fa := MemFileAccessor{
+	fa := Virtual{
 		map[string][]byte{
 			"data/manifest.yaml": []byte(`---
 manifest:
@@ -35,7 +35,7 @@ settings:
 }
 
 func TestMemFileAccessorError(t *testing.T) {
-	fa := MemFileAccessor{}
+	fa := Virtual{}
 	data, err := fa.ReadFile("data/notafile")
 	if err == nil {
 		t.Error("Did not return an error for non-existant file")
