@@ -1,6 +1,10 @@
 FileAccessor
 ============
 
+[![Build Status](https://drone.io/github.com/dcbishop/fileaccessor/status.png)](https://drone.io/github.com/dcbishop/fileaccessor/latest)
+[![Coverage Status](https://img.shields.io/coveralls/dcbishop/fileaccessor.svg)](https://coveralls.io/r/dcbishop/fileaccessor?branch=master)
+[![License](http://img.shields.io/badge/license-CC0-red.svg)](https://creativecommons.org/publicdomain/zero/1.0/legalcode)
+
 A simple interface for file access designed for unit testing in Go without
 having to write to the disk.
 
