@@ -39,12 +39,12 @@ func (fileAccessor LocalStorage) WriteFile(filename string, data []byte, perm os
 
 // Virtual load virtual files from memory
 type Virtual struct {
-	files map[string][]byte
+	Files map[string][]byte
 }
 
 // ReadFile returns the file as a string
 func (fileAccessor Virtual) ReadFile(filename string) ([]byte, error) {
-	data, ok := fileAccessor.files[filename]
+	data, ok := fileAccessor.Files[filename]
 	if ok != true {
 		return nil, errors.New("File not found.")
 	}
@@ -57,6 +57,6 @@ func (fileAccessor Virtual) WriteFile(filename string, data []byte, perm os.File
 		return errors.New("fileaccessor.Virtual Append operation currently not supported")
 	}
 
-	fileAccessor.files[filename] = data
+	fileAccessor.Files[filename] = data
 	return nil
 }
